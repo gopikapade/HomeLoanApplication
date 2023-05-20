@@ -8,4 +8,6 @@ public interface EnquiryServicei {
 
 	public Iterable<EnquiryDetails> getalldata();
 
+	public EnquiryDetails oeForword(Integer id,EnquiryDetails enquiry);
+
 }

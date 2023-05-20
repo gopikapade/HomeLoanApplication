@@ -23,12 +23,13 @@ public class EnquiryDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer enquryId;
-	private String firstName,lastName,email,marrtialStatus;
+	private String firstName,lastName,email,marrtialStatus,pancardNo;
 	private Integer age;
-	private Double mobileNo,pancardNo,income,loanAmmount;
+	private Double mobileNo,income,loanAmmount;
+	private Boolean oeResponce;
+	private Boolean userResponce;
+	private Boolean cmResponce;
+	private Boolean forwardToOe;
 	@OneToOne(cascade = CascadeType.ALL)
 	private EducationlInfo education;
-
-	
-
 }

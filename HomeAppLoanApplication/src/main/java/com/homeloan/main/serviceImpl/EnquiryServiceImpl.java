@@ -1,5 +1,7 @@
 package com.homeloan.main.serviceImpl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +15,30 @@ public class EnquiryServiceImpl implements EnquiryServicei {
 	EnquiryRepositry enqrepo;
 	
 	@Override
-	public EnquiryDetails saveAddEnquiry(EnquiryDetails enquiryDetails) {
-		
-		
-		
+	public EnquiryDetails saveAddEnquiry(EnquiryDetails enquiryDetails)
+	 {
 		return enqrepo.save(enquiryDetails);
-		
-		
+	 }
+
+	@Override
+	public Iterable<EnquiryDetails> getalldata() 
+	{
+        return enqrepo.findAll();
 	}
 
 	@Override
-	public Iterable<EnquiryDetails> getalldata() {
-		
-		return enqrepo.findAll();
+	public EnquiryDetails oeForword(Integer id, EnquiryDetails enquiry) {
+		   Optional<EnquiryDetails> findById = enqrepo.findById(id);
+		      
+		   if(findById.isPresent()) 
+		   {
+			     EnquiryDetails enquiryDetails = findById.get();
+			     enquiryDetails.setForwardToOe(true);
+			     enqrepo.save(enquiryDetails);
+			     return enquiryDetails;
+		   }
+		   
+		return null;
 	}
 
 }
