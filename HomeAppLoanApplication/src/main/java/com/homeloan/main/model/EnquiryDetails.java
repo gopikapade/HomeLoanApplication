@@ -17,8 +17,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-
 public class EnquiryDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +30,6 @@ public class EnquiryDetails {
 	private Boolean forwardToOe;
 	@OneToOne(cascade = CascadeType.ALL)
 	private EducationlInfo education;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Cibil cibilEnquiry;
 }

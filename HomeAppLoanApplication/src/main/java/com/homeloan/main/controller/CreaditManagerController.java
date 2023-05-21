@@ -33,13 +33,10 @@ public class CreaditManagerController {
 			) throws Exception, IOException{
 		ObjectMapper mapper=new ObjectMapper();
 			CreditManeger creditmanagervalue = mapper.readValue(creditmanagaer, CreditManeger.class);
-			creditmanagervalue.setSanctionLetter(sanctionLetter.getBytes());
-			
+			creditmanagervalue.setSanctionLetter(sanctionLetter.getBytes());	
 		CreditManeger cmser	=cmservice.saveCreditManager(creditmanagervalue);
 		
-						
-		
-		return new ResponseEntity(cmser, HttpStatus.OK);
+		return new ResponseEntity<CreditManeger>(cmser, HttpStatus.OK);
 		
 	}
 	
@@ -48,7 +45,7 @@ public class CreaditManagerController {
 		
 	Iterable<CreditManeger> iterable=cmservice.getcm();
 	return new ResponseEntity<Iterable<CreditManeger>>(iterable, HttpStatus.OK);
-		
+	
 	}
 
 }

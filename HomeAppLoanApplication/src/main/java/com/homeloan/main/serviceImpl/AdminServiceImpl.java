@@ -1,5 +1,6 @@
 package com.homeloan.main.serviceImpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,13 @@ public class AdminServiceImpl implements AdminService {
 		}
 		
 	
+	}
+
+
+	@Override
+	public List<Roles> getmenues() {
+		
+		return menuesRepository.findAll();
 	}
 
 }

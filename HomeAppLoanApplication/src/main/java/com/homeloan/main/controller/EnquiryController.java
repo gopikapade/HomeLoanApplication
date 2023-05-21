@@ -56,7 +56,7 @@ public class EnquiryController {
 		
 		return new ResponseEntity<BaseResponse<EnquiryDetails>>(baseResponse, HttpStatus.ACCEPTED);
 		
-	}
+	   }
 	
 	@GetMapping("/oeGetEnquiries")
 	public ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>> oeGeTforwadedEnquiries()
@@ -68,7 +68,7 @@ public class EnquiryController {
 	               BaseResponse<Iterable<EnquiryDetails>> list = new BaseResponse<Iterable<EnquiryDetails>>
 	               (201, new Date(), "All Forwrded enqiries", collect);
 	             
-	              return new ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>>(list, HttpStatus.ACCEPTED);
+	               return new ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>>(list, HttpStatus.ACCEPTED);
 		
   	     }
 	

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.homeloan.main.model.Cibil;
 import com.homeloan.main.model.EnquiryDetails;
 import com.homeloan.main.repository.EnquiryRepositry;
 import com.homeloan.main.service.EnquiryServicei;
@@ -39,6 +40,44 @@ public class EnquiryServiceImpl implements EnquiryServicei {
 		   }
 		   
 		return null;
+	}
+
+	@Override
+	public void addCibil(Cibil cibil, EnquiryDetails enquiryDetails) {
+		
+	  Optional<EnquiryDetails> findById = enqrepo.findById(enquiryDetails.getEnquryId());
+	     
+	     if(findById.isPresent()) {
+	    	   EnquiryDetails enquiryDetails2 = findById.get();
+	    	   enquiryDetails.setEnquryId(enquiryDetails2.getEnquryId());
+	    	   enquiryDetails.setCibilEnquiry(cibil);
+	    	   enqrepo.save(enquiryDetails);
+	     }else {
+	    	 System.out.println("Something not matching");
+	     }
+	     
+		
+	}
+
+	@Override
+	public EnquiryDetails cibilRemarkUpdated(EnquiryDetails details)
+	{
+		   
+		Optional<EnquiryDetails> findById = enqrepo.findById(details.getEnquryId());
+	     
+	     if(findById.isPresent()) {
+	    	  
+	    	 EnquiryDetails enquiryDetails = findById.get();
+	    	 enquiryDetails.getCibilEnquiry().setRemark(details.getCibilEnquiry().getRemark());
+	    	 
+	    	 return  enqrepo.save(enquiryDetails);
+	    	   
+	     }else 
+	     {
+	    	 System.out.println("Something not matching");
+	     }
+	     return null;
+		
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.homeloan.main.model;
 
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,17 +15,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class RelationalExecutive {
+public class OperationalExecutive {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer reId;
-	private String email;
-	private Boolean status1;
-	private Boolean status2;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private EnquiryDetails enq;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer oeId;
+	private Boolean status;
+	private String remark;
 	@OneToOne(cascade=CascadeType.ALL)
-	private PersonalDocuments personalDocuments;
+	private Cibil cibilCheck;
+	@OneToOne(cascade=CascadeType.ALL)
+	private EnquiryDetails details;
 	
 }
