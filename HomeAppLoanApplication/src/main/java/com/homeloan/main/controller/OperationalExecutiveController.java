@@ -23,18 +23,22 @@ public class OperationalExecutiveController {
 	@Autowired
 	OperationalExecutiveServiceI oes;
 	
+	
+	
 	@PostMapping("/oeenquiry")
 	public ResponseEntity<BaseResponse<OperationalExecutive>> addData(@RequestBody OperationalExecutive operationalExecutive)
 	{
 		OperationalExecutive oe = oes.saveData(operationalExecutive);
-		BaseResponse<OperationalExecutive> baseResponse = new BaseResponse<OperationalExecutive>(200, new Date(),"Data Added Successfully", oe);
+		BaseResponse<OperationalExecutive> baseResponse = new BaseResponse<OperationalExecutive>
+		(200, new Date(),"Data Added Successfully", oe);
 		return new ResponseEntity<BaseResponse<OperationalExecutive>>(baseResponse, HttpStatus.OK);
 	}
 	@GetMapping("/doc")
 	public ResponseEntity<BaseResponse<List<OperationalExecutive>>> getData()
 	{
 		List<OperationalExecutive> oe = oes.getData();
-		BaseResponse<List<OperationalExecutive>> baseResponse = new BaseResponse<List<OperationalExecutive>>(200, new Date(),"Data", oe);
+		BaseResponse<List<OperationalExecutive>> baseResponse = new BaseResponse<List<OperationalExecutive>>
+		(200, new Date(),"Data", oe);
 		return new ResponseEntity<BaseResponse<List<OperationalExecutive>>>(baseResponse, HttpStatus.OK);
 	}
 	

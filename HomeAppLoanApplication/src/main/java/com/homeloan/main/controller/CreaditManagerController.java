@@ -35,17 +35,18 @@ public class CreaditManagerController {
 			CreditManeger creditmanagervalue = mapper.readValue(creditmanagaer, CreditManeger.class);
 			creditmanagervalue.setSanctionLetter(sanctionLetter.getBytes());	
 		CreditManeger cmser	=cmservice.saveCreditManager(creditmanagervalue);
-		
 		return new ResponseEntity<CreditManeger>(cmser, HttpStatus.OK);
-		
 	}
+	
+	
 	
 	@GetMapping("/getcm")
-	public ResponseEntity<Iterable<CreditManeger>> getcm(){
-		
+	public ResponseEntity<Iterable<CreditManeger>> getcm()
+	{
 	Iterable<CreditManeger> iterable=cmservice.getcm();
 	return new ResponseEntity<Iterable<CreditManeger>>(iterable, HttpStatus.OK);
-	
 	}
+	
+	
 
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.homeloan.main.exception.InvalidEnquiry;
 import com.homeloan.main.model.Cibil;
 import com.homeloan.main.model.EnquiryDetails;
 import com.homeloan.main.repository.EnquiryRepositry;
@@ -53,7 +54,7 @@ public class EnquiryServiceImpl implements EnquiryServicei {
 	    	   enquiryDetails.setCibilEnquiry(cibil);
 	    	   enqrepo.save(enquiryDetails);
 	     }else {
-	    	 System.out.println("Something not matching");
+	    	 throw new InvalidEnquiry("Enquiry not present");
 	     }
 	     
 		
@@ -74,9 +75,23 @@ public class EnquiryServiceImpl implements EnquiryServicei {
 	    	   
 	     }else 
 	     {
-	    	 System.out.println("Something not matching");
+	    	 throw new InvalidEnquiry("Enquiry not present");
 	     }
-	     return null;
+		
+	}
+	
+	
+	@Override
+	public void deleteData(Integer enquryId) {
+		Optional<EnquiryDetails> findById = enqrepo.findById(enquryId);
+		if(findById.isPresent()) {
+			enqrepo.deleteById(findById.get().getEnquryId());
+		}
+		else {
+			
+			throw new InvalidEnquiry("This Enquiry does not exist!");
+		
+		}
 		
 	}
 

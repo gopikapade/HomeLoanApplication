@@ -15,4 +15,6 @@ public interface EnquiryServicei {
 
 	public EnquiryDetails cibilRemarkUpdated(EnquiryDetails details);
 
+	public void deleteData(Integer enquryId);
+
 }

@@ -21,7 +21,7 @@ public class RelationalExecutive {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer reId;
-	private String email;
+	private String remark;
 	private Boolean status1;
 	private Boolean status2;
 	

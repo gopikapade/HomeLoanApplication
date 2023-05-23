@@ -6,7 +6,11 @@ public interface DocumentsServiceI {
 
 	public RelationalExecutive saveData(RelationalExecutive re1);
 
-	public Iterable getDocuments();
+	public Iterable<RelationalExecutive> getDocuments();
+
+	public RelationalExecutive updateStatus(RelationalExecutive re);
+
+	public RelationalExecutive updateReamrk(RelationalExecutive re, String msg);
 
 
 

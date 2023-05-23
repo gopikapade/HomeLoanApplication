@@ -16,4 +16,19 @@ public class GlobalExceptionHandller {
 		return   new ResponseEntity<String>(in.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(InvalidApplication.class)
+	public ResponseEntity<String> invlidApp(InvalidApplication in){
+		
+		return   new ResponseEntity<String>(in.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(InvalidEnquiry.class)
+	public ResponseEntity<String> invalidEnquiry(InvalidEnquiry in){
+		
+		return   new ResponseEntity<String>(in.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	
+	
 }

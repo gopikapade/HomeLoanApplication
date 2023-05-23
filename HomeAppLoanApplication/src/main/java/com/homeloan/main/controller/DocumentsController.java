@@ -1,10 +1,4 @@
 package com.homeloan.main.controller;
-
-
-
-
-
-
 import java.io.IOException;
 import java.util.Date;
 
@@ -13,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -72,29 +69,36 @@ public class DocumentsController {
 			BaseResponse<RelationalExecutive> baseResponse=new BaseResponse<RelationalExecutive>(200, new Date(),"Data Is Added Sucessfully", re2);
 			ResponseEntity<BaseResponse<RelationalExecutive>> entity=new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.OK);
 			return entity;
-		
 	
-		
- 	
 	}
-	
 	
 	@GetMapping("/getdocuments")
-	public ResponseEntity<BaseResponse<Iterable>> getDocument(){
-		
+	public ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> getDocument(){
 		
 		Iterable<RelationalExecutive> iterable=dsi.getDocuments();
-		BaseResponse<Iterable> baseResponse=new BaseResponse<Iterable>(200, new Date(), "Date Is Get SucessFully", iterable);
-		ResponseEntity<BaseResponse<Iterable>> entity=new ResponseEntity<BaseResponse<Iterable>>(baseResponse, HttpStatus.OK);
+		BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", iterable);
+		ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> entity=new ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>>(baseResponse, HttpStatus.OK);
 		return entity;
-		
-		
 		
 	}
 	
+	@PutMapping("/updateStaus")
+	public ResponseEntity<BaseResponse<RelationalExecutive>> updateStatus(@RequestBody RelationalExecutive re){
+		
+		   RelationalExecutive getRe = dsi.updateStatus(re);
+		   BaseResponse<RelationalExecutive> baseResponse = new BaseResponse<RelationalExecutive>(201, new Date(), "Document verified", getRe);
+		   return new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.ACCEPTED);
+	} 
 	
 	
 	
+	@PutMapping("/updateremark/{msg}")
+	public ResponseEntity<BaseResponse<RelationalExecutive>> updateReamark(@RequestBody RelationalExecutive re,@PathVariable String msg){
+		   RelationalExecutive getRe = dsi.updateReamrk(re, msg);
+		   BaseResponse<RelationalExecutive> baseResponse = new BaseResponse<RelationalExecutive>(201, new Date(), "Reamrked Document", getRe);
+		   return new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.ACCEPTED);
+	} 
 	
 	
+		
 }

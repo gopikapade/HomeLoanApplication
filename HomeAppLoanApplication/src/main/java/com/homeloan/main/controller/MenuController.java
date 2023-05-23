@@ -48,9 +48,7 @@ AdminService service;
 	@GetMapping("/getAllMenues")
 	private List<Roles> geRoles()
 	{
-		 
 		return  service.getmenues();
-		
 	}	
 		
 }
