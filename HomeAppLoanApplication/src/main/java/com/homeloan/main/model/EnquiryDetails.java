@@ -26,7 +26,7 @@ public class EnquiryDetails {
 	private Double mobileNo,income,loanAmmount;
 	private Boolean oeResponce;
 	private Boolean userResponce;
-	private Boolean cmResponce;
+	private Boolean loanApplication;
 	private Boolean forwardToOe;
 	private Integer tenure;
 	@OneToOne(cascade = CascadeType.ALL)

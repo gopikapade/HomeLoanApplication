@@ -42,7 +42,8 @@ public class EnquiryController {
 	public ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>> getenquiry(){
 		
 		Iterable<EnquiryDetails> iterable=enqservice.getalldata();
-		BaseResponse<Iterable<EnquiryDetails>> baseResponse=new BaseResponse<Iterable<EnquiryDetails>>(200, new Date(), "Data Is GEt Sucessfully", iterable);
+		BaseResponse<Iterable<EnquiryDetails>> baseResponse=new BaseResponse<Iterable<EnquiryDetails>>
+		(200, new Date(), "Data Is GEt Sucessfully", iterable);
 		return new ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>>(baseResponse, HttpStatus.OK);
 		
 	}

@@ -80,10 +80,10 @@ public class DocumentsController {
 		
 		List<RelationalExecutive> list =  dsi.getDocuments();
 		
-		List<RelationalExecutive> collect = list.stream().filter(rx->rx.getStatus1()!=null).collect(Collectors.toList());  
+//		List<RelationalExecutive> collect = list.stream().filter(rx->rx.getStatus2()!=null).collect(Collectors.toList());  
 		
 		
-		BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", collect);
+		BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", list);
 		ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> entity=new ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>>(baseResponse, HttpStatus.OK);
 		return entity;
 		
@@ -97,6 +97,31 @@ public class DocumentsController {
 		   return new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.ACCEPTED);
 	} 
 	
+	
+	
+	@PutMapping("/updatedocuments/{reId}")
+	public ResponseEntity<BaseResponse<RelationalExecutive>> updateDocument(@PathVariable("reId") Integer reId, @RequestParam("re") String relexe,
+			@RequestParam("addressProof") MultipartFile addressProof,
+			@RequestParam("pancard") MultipartFile pancard,
+			@RequestParam("incomeTax") MultipartFile incomeTax,
+			@RequestParam("aadharCard") MultipartFile aadharCard,
+			@RequestParam("photo") MultipartFile photo,
+			@RequestParam("salarySlip") MultipartFile salarySlip,
+			@RequestParam("buildingpermission") MultipartFile buildingpermission,
+			@RequestParam("layout") MultipartFile layout,
+			@RequestParam("buildingPlan") MultipartFile buildingPlan,
+			@RequestParam("estimate") MultipartFile estimate,
+			@RequestParam("noc") MultipartFile noc) throws IOException
+	{
+		
+			
+		RelationalExecutive relExe = dsi.updateDoc(reId,relexe,addressProof,pancard,incomeTax,aadharCard,photo,salarySlip,buildingpermission,layout,buildingPlan,estimate,noc);
+		BaseResponse<RelationalExecutive> baseResponse=new BaseResponse<RelationalExecutive>(200, new Date(),"Data updated Sucessfully", relExe);
+		ResponseEntity<BaseResponse<RelationalExecutive>> entity=new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.OK);
+		return entity;
+		
+		
+	}
 	
 	
 	@PutMapping("/updateremark/{msg}")

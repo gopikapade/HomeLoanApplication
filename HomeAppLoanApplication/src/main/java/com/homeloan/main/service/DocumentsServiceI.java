@@ -1,6 +1,9 @@
 package com.homeloan.main.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.homeloan.main.model.RelationalExecutive;
 
@@ -16,7 +19,9 @@ public interface DocumentsServiceI {
 
 	public RelationalExecutive saveCMSanctionLetter(RelationalExecutive rx, byte[] readAllBytes);
 	
-
-
-
+	
+	public RelationalExecutive updateDoc(Integer reId, String relexe, MultipartFile addressProof, MultipartFile pancard,
+			MultipartFile incomeTax, MultipartFile aadharCard, MultipartFile photo, MultipartFile salarySlip,
+			MultipartFile buildingpermission, MultipartFile layout, MultipartFile buildingPlan, MultipartFile estimate,
+			MultipartFile noc) throws IOException, IOException;
 }

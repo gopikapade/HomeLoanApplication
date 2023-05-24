@@ -27,8 +27,10 @@ public class RelationalExecutive {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private EnquiryDetails enq;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	private PersonalDocuments personalDocuments;
 	@OneToOne(cascade =  CascadeType.ALL)
 	private CreditManeger creditManeger;	
+	
 }
