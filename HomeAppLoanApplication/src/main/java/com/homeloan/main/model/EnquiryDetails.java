@@ -28,8 +28,10 @@ public class EnquiryDetails {
 	private Boolean userResponce;
 	private Boolean cmResponce;
 	private Boolean forwardToOe;
+	private Integer tenure;
 	@OneToOne(cascade = CascadeType.ALL)
 	private EducationlInfo education;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cibil cibilEnquiry;
+	
 }

@@ -1,12 +1,14 @@
 package com.homeloan.main.service;
 
+import java.util.List;
+
 import com.homeloan.main.model.RelationalExecutive;
 
 public interface DocumentsServiceI {
 
 	public RelationalExecutive saveData(RelationalExecutive re1);
 
-	public Iterable<RelationalExecutive> getDocuments();
+	public List<RelationalExecutive> getDocuments();
 
 	public RelationalExecutive updateStatus(RelationalExecutive re);
 

@@ -52,6 +52,7 @@ public class EnquiryServiceImpl implements EnquiryServicei {
 	    	   EnquiryDetails enquiryDetails2 = findById.get();
 	    	   enquiryDetails.setEnquryId(enquiryDetails2.getEnquryId());
 	    	   enquiryDetails.setCibilEnquiry(cibil);
+	    	   enquiryDetails.setOeResponce(true);
 	    	   enqrepo.save(enquiryDetails);
 	     }else {
 	    	 throw new InvalidEnquiry("Enquiry not present");

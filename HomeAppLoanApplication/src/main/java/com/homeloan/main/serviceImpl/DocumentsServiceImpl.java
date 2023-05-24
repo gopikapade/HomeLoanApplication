@@ -2,6 +2,7 @@ package com.homeloan.main.serviceImpl;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class DocumentsServiceImpl implements DocumentsServiceI {
 	}
 
 	@Override
-	public Iterable<RelationalExecutive> getDocuments() {
+	public List<RelationalExecutive> getDocuments() {
 		
 		return dr.findAll();
 	}
@@ -37,7 +38,7 @@ public class DocumentsServiceImpl implements DocumentsServiceI {
 	 if(findById.isPresent()) {
 		    RelationalExecutive relationalExecutive = findById.get();
 		    re.setReId(relationalExecutive.getReId());
-		    re.setStatus1(true);
+		    re.setStatus2(true);
 		    return dr.save(re);
 		    
 	 }

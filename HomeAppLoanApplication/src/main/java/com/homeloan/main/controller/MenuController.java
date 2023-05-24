@@ -45,12 +45,15 @@ AdminService service;
 		   return new ResponseEntity<BaseResponse<Roles>>(baseResponse, HttpStatus.ACCEPTED);
 	}
 	
+	
 	@GetMapping("/getAllMenues")
 	private List<Roles> geRoles()
 	{
 		return  service.getmenues();
 	}	
 		
+	
+	
 }
 	
 	  

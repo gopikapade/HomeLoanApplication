@@ -24,6 +24,7 @@ public class CibilScoreController {
 	@Autowired
 	EnquiryServicei enquiryServicei;
 	
+	
 	@PostMapping("/cibil")
 	public ResponseEntity<Cibil> getCibilScore(@RequestBody EnquiryDetails details)
 	{
@@ -32,6 +33,7 @@ public class CibilScoreController {
 		enquiryServicei.addCibil(cibil, details);
 		return new ResponseEntity<Cibil>(cibil,HttpStatus.ACCEPTED);
 	}
+	
 	
 	@PutMapping("/remarkadd")
     public ResponseEntity<BaseResponse<EnquiryDetails>> remarkAdded(@RequestBody EnquiryDetails details){

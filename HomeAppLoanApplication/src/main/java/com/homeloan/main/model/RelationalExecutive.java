@@ -29,5 +29,6 @@ public class RelationalExecutive {
 	private EnquiryDetails enq;
 	@OneToOne(cascade=CascadeType.ALL)
 	private PersonalDocuments personalDocuments;
-	
+	@OneToOne
+	private CreditManeger creditManeger;	
 }

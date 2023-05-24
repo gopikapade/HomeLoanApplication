@@ -1,6 +1,9 @@
 package com.homeloan.main.controller;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,8 +78,12 @@ public class DocumentsController {
 	@GetMapping("/getdocuments")
 	public ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> getDocument(){
 		
-		Iterable<RelationalExecutive> iterable=dsi.getDocuments();
-		BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", iterable);
+		List<RelationalExecutive> list =  dsi.getDocuments();
+		
+		List<RelationalExecutive> collect = list.stream().filter(rx->rx.getStatus1()!=null).collect(Collectors.toList());  
+		
+		
+		BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", collect);
 		ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> entity=new ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>>(baseResponse, HttpStatus.OK);
 		return entity;
 		
