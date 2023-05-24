@@ -24,4 +24,10 @@ public class CreditManagerServiceImpl implements CreditManagerService {
 		
 		return crrepo.findAll();
 	}
+
+	@Override
+	public Object saveSanctionLetter(byte[] readAllBytes) {
+		
+		return null;
+	}
 }

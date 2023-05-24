@@ -1,5 +1,7 @@
 package com.homeloan.main.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +19,9 @@ public class EMI {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Double principleAmmount;
+	private Double LoanAmmount;
 	private Integer tenure;
 	private Double intrestrate;
-	private String date; 
-
+	private Double monthlyEmi = 0.0;
+	private Date date = new Date();
 }

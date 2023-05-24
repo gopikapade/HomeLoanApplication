@@ -8,4 +8,6 @@ public interface CreditManagerService {
 
 	public Iterable<CreditManeger> getcm();
 
+	public Object saveSanctionLetter(byte[] readAllBytes);
+
 }

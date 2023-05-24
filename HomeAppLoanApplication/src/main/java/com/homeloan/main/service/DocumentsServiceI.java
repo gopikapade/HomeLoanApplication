@@ -14,6 +14,9 @@ public interface DocumentsServiceI {
 
 	public RelationalExecutive updateReamrk(RelationalExecutive re, String msg);
 
+	public RelationalExecutive saveCMSanctionLetter(RelationalExecutive rx, byte[] readAllBytes);
+	
+
 
 
 }

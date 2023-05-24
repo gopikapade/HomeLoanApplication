@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.homeloan.main.exception.InvalidApplication;
+import com.homeloan.main.model.CreditManeger;
 import com.homeloan.main.model.RelationalExecutive;
 import com.homeloan.main.repository.DocumentsRepository;
 import com.homeloan.main.service.DocumentsServiceI;
@@ -63,6 +64,27 @@ public class DocumentsServiceImpl implements DocumentsServiceI {
      else {
     	   throw new InvalidApplication("Invalid Application");
      }
+	}
+
+	@Override
+	public RelationalExecutive saveCMSanctionLetter(RelationalExecutive rx, byte[] readAllBytes) {
+		
+		            Optional<RelationalExecutive> findById = dr.findById(rx.getReId());
+		            
+		            if(findById.isPresent()) {
+		            	rx.setReId(findById.get().getReId());
+		            	rx.setCreditManeger(new CreditManeger());
+		            	rx.getCreditManeger().setSanctionLetter(readAllBytes);
+		            	return dr.save(rx);
+		              }
+		            else {
+		            	
+		            	System.out.println("Not saving the pdf");
+		            }
+		
+		
+		
+		return null;
 	}
 
 }
