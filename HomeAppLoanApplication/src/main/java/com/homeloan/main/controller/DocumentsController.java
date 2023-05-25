@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.deser.Deserializers.Base;
 import com.homeloan.main.model.PersonalDocuments;
 import com.homeloan.main.model.PropertyDocuments;
 import com.homeloan.main.model.RelationalExecutive;
@@ -143,6 +145,27 @@ public class DocumentsController {
 		   
 		   return new ResponseEntity<BaseResponse<List<RelationalExecutive>>>(baseResponse, HttpStatus.OK);
 		
+	}
+	
+	@PutMapping("/forwardToAh/{id}")
+	public ResponseEntity<BaseResponse<RelationalExecutive>> forwordToAh(@PathVariable Integer id,  @RequestBody RelationalExecutive sanction){
+		
+                RelationalExecutive re	= 	dsi.forwordToAh(id);
+		   
+                BaseResponse<RelationalExecutive> baseResponse = new BaseResponse<RelationalExecutive>(201,new Date() , "Forword To ah", re);
+                 
+                return new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/allSanctionLoan")
+	public ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> getAllSanctionLoan(){
+		     List<RelationalExecutive> list =  dsi.getDocuments();
+		     List<RelationalExecutive> collect = list.stream().filter(rx->rx.getStatus2()!=null).collect(Collectors.toList());  
+			 BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", collect);
+			 ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>> entity=new ResponseEntity<BaseResponse<Iterable<RelationalExecutive>>>(baseResponse, HttpStatus.OK);
+			 return entity;
+
 	}
 	
 	

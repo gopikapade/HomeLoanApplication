@@ -26,4 +26,6 @@ public interface DocumentsServiceI {
 			MultipartFile noc) throws IOException, IOException;
 
 	public List<RelationalExecutive> getSanctionLeeters();
+
+	public RelationalExecutive forwordToAh(Integer id);
 }
