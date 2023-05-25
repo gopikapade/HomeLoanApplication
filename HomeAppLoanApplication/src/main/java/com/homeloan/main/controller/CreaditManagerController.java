@@ -1,6 +1,7 @@
 package com.homeloan.main.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.homeloan.main.model.CreditManeger;
+import com.homeloan.main.responce.BaseResponse;
 import com.homeloan.main.service.CreditManagerService;
 
 @CrossOrigin("*")
@@ -26,7 +28,7 @@ public class CreaditManagerController {
 	CreditManagerService cmservice;
 	
 	@PostMapping("/addcm")
-	public ResponseEntity<CreditManeger> addCreaditmanager(
+	public ResponseEntity<BaseResponse< CreditManeger>> addCreaditmanager(
 			@RequestParam("creditManager") String creditmanagaer,
 			@RequestParam("sanctionLetter") MultipartFile sanctionLetter			
 			
@@ -35,18 +37,21 @@ public class CreaditManagerController {
 			CreditManeger creditmanagervalue = mapper.readValue(creditmanagaer, CreditManeger.class);
 			creditmanagervalue.setSanctionLetter(sanctionLetter.getBytes());	
 		CreditManeger cmser	=cmservice.saveCreditManager(creditmanagervalue);
-		return new ResponseEntity<CreditManeger>(cmser, HttpStatus.OK);
+		
+		BaseResponse<CreditManeger> baseResponse=new BaseResponse<CreditManeger>(200, new Date(), "Data Is Added Sucessfully", cmser);
+		
+		return new ResponseEntity<BaseResponse< CreditManeger>>(baseResponse, HttpStatus.OK);
 	}
 	
 	
 	
-	@GetMapping("/getcm")
-	public ResponseEntity<Iterable<CreditManeger>> getcm()
-	{
-	Iterable<CreditManeger> iterable=cmservice.getcm();
-	return new ResponseEntity<Iterable<CreditManeger>>(iterable, HttpStatus.OK);
-	}
-	
+//	@GetMapping(value = "/getcm" ,produces = "application/pdf")
+//	public ResponseEntity<Iterable<CreditManeger>> getcm()
+//	{
+//	Iterable<CreditManeger> iterable=cmservice.getcm();
+//	return new ResponseEntity<Iterable<CreditManeger>>(iterable, HttpStatus.OK);
+//	}
+//	
 	
 
 }
