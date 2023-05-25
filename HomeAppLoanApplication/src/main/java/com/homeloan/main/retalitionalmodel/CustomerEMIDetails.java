@@ -8,11 +8,12 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Entity
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
-public class EMIDetails {
+@Data
+public class CustomerEMIDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

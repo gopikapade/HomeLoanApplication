@@ -1,5 +1,8 @@
 package com.homeloan.main.retalitionalmodel;
 
+
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +28,9 @@ tenure;
 private Double totalAmounttobepaid,rateOfInterest,totalInterest;
 private String sanctionDate,remark,status;
 @OneToOne(cascade = CascadeType.ALL)
-private EMIDetails Emidetails;
+//private EMIDetails emidetails;
+
+private EMIDetails emidetails;
 
 
 }

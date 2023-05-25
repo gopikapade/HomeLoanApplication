@@ -35,6 +35,15 @@ public class GlobalExceptionHandller {
 		
 	} 
 	
+	@ExceptionHandler(InvalidIdClassException.class)
+	public ResponseEntity<String> invalidclass(InvalidIdClassException in){
+		
+		return   new ResponseEntity<String>(in.getMessage(), HttpStatus.BAD_REQUEST);
+		
+	} 
+	
+	
+	
 	
 	
 	
