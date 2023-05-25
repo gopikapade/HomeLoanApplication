@@ -80,7 +80,7 @@ public class DocumentsController {
 		
 		List<RelationalExecutive> list =  dsi.getDocuments();
 		
-//		List<RelationalExecutive> collect = list.stream().filter(rx->rx.getStatus2()!=null).collect(Collectors.toList());  
+    //List<RelationalExecutive> collect = list.stream().filter(rx->rx.getStatus2()!=null).collect(Collectors.toList());  
 		
 		
 		BaseResponse<Iterable<RelationalExecutive>> baseResponse=new BaseResponse<Iterable<RelationalExecutive>>(200, new Date(), "Date Is Get SucessFully", list);
@@ -99,8 +99,8 @@ public class DocumentsController {
 	
 	
 	
-	@PutMapping("/updatedocuments/{reId}")
-	public ResponseEntity<BaseResponse<RelationalExecutive>> updateDocument(@PathVariable("reId") Integer reId, @RequestParam("re") String relexe,
+	@PutMapping("/updatedocuments")
+	public ResponseEntity<BaseResponse<RelationalExecutive>> updateDocument( @RequestParam("re") String relexe,
 			@RequestParam("addressProof") MultipartFile addressProof,
 			@RequestParam("pancard") MultipartFile pancard,
 			@RequestParam("incomeTax") MultipartFile incomeTax,
@@ -115,7 +115,7 @@ public class DocumentsController {
 	{
 		
 			
-		RelationalExecutive relExe = dsi.updateDoc(reId,relexe,addressProof,pancard,incomeTax,aadharCard,photo,salarySlip,buildingpermission,layout,buildingPlan,estimate,noc);
+		RelationalExecutive relExe = dsi.updateDoc(relexe,addressProof,pancard,incomeTax,aadharCard,photo,salarySlip,buildingpermission,layout,buildingPlan,estimate,noc);
 		BaseResponse<RelationalExecutive> baseResponse=new BaseResponse<RelationalExecutive>(200, new Date(),"Data updated Sucessfully", relExe);
 		ResponseEntity<BaseResponse<RelationalExecutive>> entity=new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.OK);
 		return entity;
@@ -130,6 +130,20 @@ public class DocumentsController {
 		   BaseResponse<RelationalExecutive> baseResponse = new BaseResponse<RelationalExecutive>(201, new Date(), "Reamrked Document", getRe);
 		   return new ResponseEntity<BaseResponse<RelationalExecutive>>(baseResponse, HttpStatus.ACCEPTED);
 	} 
+	
+	@GetMapping("/getSanctionLetters")
+	public ResponseEntity<BaseResponse<List<RelationalExecutive>>> getSanctionLetters(){
+      
+		     
+		List<RelationalExecutive> relationalExecative   = dsi.getSanctionLeeters();
+		
+		   List<RelationalExecutive> collect = relationalExecative.stream().filter(ex->ex.getCreditManeger()!=null).collect(Collectors.toList());
+		
+		   BaseResponse<List<RelationalExecutive>> baseResponse = new BaseResponse<List<RelationalExecutive>>(201, new Date(), "All Santion Letters", collect);
+		   
+		   return new ResponseEntity<BaseResponse<List<RelationalExecutive>>>(baseResponse, HttpStatus.OK);
+		
+	}
 	
 	
 		

@@ -41,9 +41,12 @@ public class EnquiryController {
 	@GetMapping("/getenquiry")
 	public ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>> getenquiry(){
 		
-		Iterable<EnquiryDetails> iterable=enqservice.getalldata();
+	   List<EnquiryDetails> iterable=enqservice.getalldata();
+	     
+	    List<EnquiryDetails> collect = iterable.stream().filter(enq->enq.getLoanApplication()==null).collect(Collectors.toList());
+	   
 		BaseResponse<Iterable<EnquiryDetails>> baseResponse=new BaseResponse<Iterable<EnquiryDetails>>
-		(200, new Date(), "Data Is GEt Sucessfully", iterable);
+		(200, new Date(), "Data Is GEt Sucessfully", collect);
 		return new ResponseEntity<BaseResponse<Iterable<EnquiryDetails>>>(baseResponse, HttpStatus.OK);
 		
 	}

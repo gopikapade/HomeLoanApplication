@@ -1,5 +1,6 @@
 package com.homeloan.main.serviceImpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class EnquiryServiceImpl implements EnquiryServicei {
 	 }
 
 	@Override
-	public Iterable<EnquiryDetails> getalldata() 
+	public List<EnquiryDetails> getalldata() 
 	{
         return enqrepo.findAll();
 	}

@@ -17,13 +17,15 @@ import com.homeloan.main.model.PersonalDocuments;
 import com.homeloan.main.model.PropertyDocuments;
 import com.homeloan.main.model.RelationalExecutive;
 import com.homeloan.main.repository.DocumentsRepository;
+import com.homeloan.main.repository.EnquiryRepositry;
 import com.homeloan.main.service.DocumentsServiceI;
 @Service
 public class DocumentsServiceImpl implements DocumentsServiceI {
 	
 	@Autowired
-	DocumentsRepository dr;
-
+	DocumentsRepository dr; 
+    @Autowired
+    EnquiryRepositry enquiryRepositry;
 	@Override
 	public RelationalExecutive saveData(RelationalExecutive re) {
 		re.getEnq().setLoanApplication(true);
@@ -94,17 +96,19 @@ public class DocumentsServiceImpl implements DocumentsServiceI {
 	
 	
 	@Override
-	public RelationalExecutive updateDoc(Integer reId, String relexe, MultipartFile addressProof, MultipartFile pancard,
+	public RelationalExecutive updateDoc(String relexe, MultipartFile addressProof, MultipartFile pancard,
 			MultipartFile incomeTax, MultipartFile aadharCard, MultipartFile photo, MultipartFile salarySlip,
 			MultipartFile buildingpermission, MultipartFile layout, MultipartFile buildingPlan, MultipartFile estimate,
 			MultipartFile noc) throws IOException, IOException {
-		Optional<RelationalExecutive> rexe = dr.findById(reId);
-        if (rexe.isPresent()) {
-        	
+		
+       	
         	
 		ObjectMapper mapper = new ObjectMapper();
 		RelationalExecutive re1 = mapper.readValue(relexe,RelationalExecutive.class);
-		re1.setReId(rexe.get().getReId());
+    
+		    
+
+		
 			re1.setPersonalDocuments(new PersonalDocuments());
 			re1.getPersonalDocuments().setPropertyDocuments(new PropertyDocuments());
 			re1.getPersonalDocuments().setAddressProof(addressProof.getBytes());
@@ -121,9 +125,11 @@ public class DocumentsServiceImpl implements DocumentsServiceI {
         
 			//RelationalExecutive re2 = dr.save(re1);
 			return dr.save(re1);
-        }
-        else {
-        	return new RelationalExecutive();
-        }
 	 }
+
+	@Override
+	public List<RelationalExecutive> getSanctionLeeters() {
+		
+		return dr.findAll();
+	}
 }

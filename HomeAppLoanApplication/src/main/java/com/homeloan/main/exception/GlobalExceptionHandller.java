@@ -28,6 +28,13 @@ public class GlobalExceptionHandller {
 		return   new ResponseEntity<String>(in.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(InvalidEmailAddress.class)
+	public ResponseEntity<String> invalidEmail(InvalidEmailAddress in){
+		
+		return   new ResponseEntity<String>(in.getMessage(), HttpStatus.BAD_REQUEST);
+		
+	} 
+	
 	
 	
 	

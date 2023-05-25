@@ -25,7 +25,7 @@ public class RelationalExecutive {
 	private Boolean status1;
 	private Boolean status2;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.DETACH)
 	private EnquiryDetails enq;
 	
 	@OneToOne(cascade=CascadeType.ALL)

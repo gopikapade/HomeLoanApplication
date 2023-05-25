@@ -56,7 +56,7 @@ public class EmailServiceImpl implements EmailSenderService {
 			
 			
 		} catch (Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 		}
 		
 		sender.send(mimeMessage);

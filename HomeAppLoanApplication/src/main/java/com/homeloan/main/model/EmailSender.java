@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 public class EmailSender {
 	
 	
-	private String to,from,subject,textBodyMsg;
+	private String 
+	to
+	,from
+	,subject,
+	textBodyMsg;
 	
 	
 	

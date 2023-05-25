@@ -20,8 +20,10 @@ public interface DocumentsServiceI {
 	public RelationalExecutive saveCMSanctionLetter(RelationalExecutive rx, byte[] readAllBytes);
 	
 	
-	public RelationalExecutive updateDoc(Integer reId, String relexe, MultipartFile addressProof, MultipartFile pancard,
+	public RelationalExecutive updateDoc( String relexe, MultipartFile addressProof, MultipartFile pancard,
 			MultipartFile incomeTax, MultipartFile aadharCard, MultipartFile photo, MultipartFile salarySlip,
 			MultipartFile buildingpermission, MultipartFile layout, MultipartFile buildingPlan, MultipartFile estimate,
 			MultipartFile noc) throws IOException, IOException;
+
+	public List<RelationalExecutive> getSanctionLeeters();
 }

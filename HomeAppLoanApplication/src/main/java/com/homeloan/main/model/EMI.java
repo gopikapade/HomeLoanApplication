@@ -22,6 +22,6 @@ public class EMI {
 	private Double LoanAmmount;
 	private Integer tenure;
 	private Double intrestrate;
-	private Double monthlyEmi = 0.0;
+	private Double monthlyEmi;
 	private Date date = new Date();
 }
