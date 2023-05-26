@@ -42,44 +42,32 @@ public class CustomerAccountController {
 	) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		CustomerAccount account = mapper.readValue(customeraccount, CustomerAccount.class);
-
-
 		account.getProfession().setProfessionsalaryslips(professionsalaryslips.getBytes());
 
 		account.getMortgageDetails().setMortgagePropertyInsurance(mortgagePropertyInsurance.getBytes());
 		account.getMortgageDetails().setMortgagePropertyProof(mortgagePropertyProof.getBytes());
-
-
 		account.getPropertyinfo().setPropertydocuments(new CustomerPropertyDocuments());
 		account.getPropertyinfo().getPropertydocuments().setBuildingpermission(buildingpermission.getBytes());
 		account.getPropertyinfo().getPropertydocuments().setLayout(layout.getBytes());
 		account.getPropertyinfo().getPropertydocuments().setBuildingPlan(buildingPlan.getBytes());
 		account.getPropertyinfo().getPropertydocuments().setEstimate(estimate.getBytes());
 		account.getPropertyinfo().getPropertydocuments().setNoc(noc.getBytes());
-
 		CustomerAccount customerAccount2 = cusservice.saveCustomerDetails(account);
 		BaseResponse<CustomerAccount> baseResponse = new BaseResponse<CustomerAccount>(200, new Date(),
 				"Data Is Added Sucessfully", customerAccount2);
-
 		return new ResponseEntity<BaseResponse<CustomerAccount>>(baseResponse, HttpStatus.OK);
-
 	}
 	
 	
 	
 	 @GetMapping("/getalldata")
-	    public ResponseEntity<BaseResponse<Iterable<CustomerAccount>>> getAllData() {
+	    public ResponseEntity<BaseResponse<Iterable<CustomerAccount>>> getAllData() 
+	   {
 		 Iterable<CustomerAccount> customerAccounts = cusservice.getAllCustomerAccounts();
-
-		
-
-			BaseResponse<Iterable<CustomerAccount>> baseResponse = new BaseResponse<>(200, new Date(),
-			        "All Customer Accounts", customerAccounts);
-			return new ResponseEntity<>(baseResponse, HttpStatus.OK);
-	
-	
-	 }
-	 
+		 BaseResponse<Iterable<CustomerAccount>> baseResponse = new BaseResponse<>(200, new Date(),
+	    "All Customer Accounts", customerAccounts);
+	     return new ResponseEntity<BaseResponse<Iterable<CustomerAccount>>>(baseResponse, HttpStatus.OK);
+	   }
 	 
 	 
 }

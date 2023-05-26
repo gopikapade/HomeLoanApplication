@@ -19,7 +19,6 @@ import com.homeloan.main.service.LoanDisburstmentService;
 
 @CrossOrigin("*")
 @RestController
-
 @RequestMapping("/loandis")
 public class LoanDisburstmentController {
 	
@@ -31,7 +30,7 @@ public class LoanDisburstmentController {
 	
 	
 	@PutMapping("/disbust/{id}")
-	public ResponseEntity<BaseResponse<LoanDisbursement>> emidetailsupdate(@PathVariable Integer id,@RequestBody LoanDisbursement loandis){
+	public ResponseEntity<BaseResponse<LoanDisbursement>> emidetailsupdate(@PathVariable Integer id, @RequestBody LoanDisbursement loandis){
 		
 		
 		LoanDisbursement details=loandservice.updateloandisbusrtment(id,loandis);
@@ -50,6 +49,4 @@ public class LoanDisburstmentController {
 		return new ResponseEntity<BaseResponse<Iterable<LoanDisbursement> >>(baseResponse,HttpStatus.OK);
 		
 	}
-	
-
 }

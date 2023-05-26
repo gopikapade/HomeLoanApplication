@@ -21,5 +21,4 @@ public class CustomerEMIDetails {
 	private String nextEmiDueDate,
 	previousEmiStatus;
 	private Double emiAmountMonthly;
-
 }
