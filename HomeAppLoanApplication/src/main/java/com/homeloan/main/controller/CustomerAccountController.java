@@ -30,63 +30,32 @@ public class CustomerAccountController {
 
 	@PostMapping("/createcustomeraccount")
 	public ResponseEntity<BaseResponse<CustomerAccount>> createCustomerAccount(
-			 @RequestParam("customeraccount") String customeraccount,
-			
-			 @RequestParam(value = "professionsalaryslips", required = false) MultipartFile professionsalaryslips,
-		        @RequestParam(value = "mortgagePropertyProof", required = false) MultipartFile mortgagePropertyProof,
-		        @RequestParam(value = "mortgagePropertyInsurance", required = false) MultipartFile mortgagePropertyInsurance,
-		        @RequestParam(value = "buildingpermission", required = false) MultipartFile buildingpermission,
-		        @RequestParam(value = "layout", required = false) MultipartFile layout,
-		        @RequestParam(value = "buildingPlan", required = false) MultipartFile buildingPlan,
-		        @RequestParam(value = "estimate", required = false) MultipartFile estimate,
-		        @RequestParam(value = "noc", required = false) MultipartFile noc
+			@RequestParam("customeraccount") String customeraccount,
+			@RequestParam("professionsalaryslips") MultipartFile professionsalaryslips,
+			@RequestParam("mortgagePropertyProof") MultipartFile mortgagePropertyProof,
+			@RequestParam("mortgagePropertyInsurance") MultipartFile mortgagePropertyInsurance,
+
+			@RequestParam("buildingpermission") MultipartFile buildingpermission,
+			@RequestParam("layout") MultipartFile layout, @RequestParam("buildingPlan") MultipartFile buildingPlan,
+			@RequestParam("estimate") MultipartFile estimate, @RequestParam("noc") MultipartFile noc
 
 	) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		CustomerAccount account = mapper.readValue(customeraccount, CustomerAccount.class);
 
 
-//		account.getProfession().setProfessionsalaryslips(professionsalaryslips.getBytes());
-//
-//		account.getMortgageDetails().setMortgagePropertyInsurance(mortgagePropertyInsurance.getBytes());
-//		account.getMortgageDetails().setMortgagePropertyProof(mortgagePropertyProof.getBytes());
-//
-//
-//		account.getPropertyinfo().setPropertydocuments(new CustomerPropertyDocuments());
-//		account.getPropertyinfo().getPropertydocuments().setBuildingpermission(buildingpermission.getBytes());
-//		account.getPropertyinfo().getPropertydocuments().setLayout(layout.getBytes());
-//		account.getPropertyinfo().getPropertydocuments().setBuildingPlan(buildingPlan.getBytes());
-//		account.getPropertyinfo().getPropertydocuments().setEstimate(estimate.getBytes());
-//		account.getPropertyinfo().getPropertydocuments().setNoc(noc.getBytes());
-		
-		 // Set optional documents if they exist
-	    if (professionsalaryslips != null) {
-	        account.getProfession().setProfessionsalaryslips(professionsalaryslips.getBytes());
-	    }
-	    if (mortgagePropertyProof != null) {
-	        account.getMortgageDetails().setMortgagePropertyProof(mortgagePropertyProof.getBytes());
-	    }
-	    if (mortgagePropertyInsurance != null) {
-	        account.getMortgageDetails().setMortgagePropertyInsurance(mortgagePropertyInsurance.getBytes());
-	    }
-	    if (buildingpermission != null || layout != null || buildingPlan != null || estimate != null || noc != null) {
-	        account.getPropertyinfo().setPropertydocuments(new CustomerPropertyDocuments());
-	        if (buildingpermission != null) {
-	            account.getPropertyinfo().getPropertydocuments().setBuildingpermission(buildingpermission.getBytes());
-	        }
-	        if (layout != null) {
-	            account.getPropertyinfo().getPropertydocuments().setLayout(layout.getBytes());
-	        }
-	        if (buildingPlan != null) {
-	            account.getPropertyinfo().getPropertydocuments().setBuildingPlan(buildingPlan.getBytes());
-	        }
-	        if (estimate != null) {
-	            account.getPropertyinfo().getPropertydocuments().setEstimate(estimate.getBytes());
-	        }
-	        if (noc != null) {
-	            account.getPropertyinfo().getPropertydocuments().setNoc(noc.getBytes());
-	        }
-	    }
+		account.getProfession().setProfessionsalaryslips(professionsalaryslips.getBytes());
+
+		account.getMortgageDetails().setMortgagePropertyInsurance(mortgagePropertyInsurance.getBytes());
+		account.getMortgageDetails().setMortgagePropertyProof(mortgagePropertyProof.getBytes());
+
+
+		account.getPropertyinfo().setPropertydocuments(new CustomerPropertyDocuments());
+		account.getPropertyinfo().getPropertydocuments().setBuildingpermission(buildingpermission.getBytes());
+		account.getPropertyinfo().getPropertydocuments().setLayout(layout.getBytes());
+		account.getPropertyinfo().getPropertydocuments().setBuildingPlan(buildingPlan.getBytes());
+		account.getPropertyinfo().getPropertydocuments().setEstimate(estimate.getBytes());
+		account.getPropertyinfo().getPropertydocuments().setNoc(noc.getBytes());
 
 		CustomerAccount customerAccount2 = cusservice.saveCustomerDetails(account);
 		BaseResponse<CustomerAccount> baseResponse = new BaseResponse<CustomerAccount>(200, new Date(),

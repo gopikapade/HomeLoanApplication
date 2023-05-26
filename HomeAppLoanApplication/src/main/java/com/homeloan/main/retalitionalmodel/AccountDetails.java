@@ -19,7 +19,7 @@ public class AccountDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer accountId;
-	private String accountType,ifsc,bankname,	
+	private String accountType,
 
 	accountHolderName,
 	accountStatus;
