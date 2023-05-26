@@ -18,10 +18,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class CurrentLoanDetails {
+public class CurrentLoanDetails{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer	currentloanId;
 private Integer currentloanNo,
 tenure;
@@ -29,8 +29,6 @@ private Double totalAmounttobepaid,rateOfInterest,totalInterest;
 private String sanctionDate,remark,status;
 @OneToOne(cascade = CascadeType.ALL)
 //private EMIDetails emidetails;
-
 private EMIDetails emidetails;
-
 
 }

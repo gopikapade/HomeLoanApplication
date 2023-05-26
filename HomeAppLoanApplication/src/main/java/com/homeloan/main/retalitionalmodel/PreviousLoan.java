@@ -19,12 +19,8 @@ public class PreviousLoan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer previousLoanId;
 	private Double previousLoanAmount,
-
-			previousLoanpaidAmount, previousLoanremainingAmount;
-
+    previousLoanpaidAmount, previousLoanremainingAmount;
 	private Integer previousLoanTenure, previousLoandeafulterCount;
 	private String previousLoanStatus,
 	previousLoanRemark;
-	
-
 }

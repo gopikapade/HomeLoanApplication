@@ -27,7 +27,6 @@ public class CustomerEMIDetailsServiceImpl implements CustomerEMIDetailsService 
 			EMIDetails save = emirepo.save(emidata);
 			
 			return save;		
-			
 		}
 		
 		else {

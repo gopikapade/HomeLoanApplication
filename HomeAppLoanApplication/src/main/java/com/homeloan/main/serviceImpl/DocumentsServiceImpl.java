@@ -132,4 +132,21 @@ public class DocumentsServiceImpl implements DocumentsServiceI {
 		
 		return dr.findAll();
 	}
+
+	@Override
+	public RelationalExecutive forwordToAh(Integer id) {
+		  
+		Optional<RelationalExecutive> findById = dr.findById(id);
+		if(findById.isPresent()) 
+		{
+		   RelationalExecutive re = findById.get();
+		   re.setStatus2(true);
+		   dr.save(re);
+		   return re;
+		}
+		
+		else {
+			 throw new InvalidApplication("Invalid Application ID");
+		}
+	}
 }

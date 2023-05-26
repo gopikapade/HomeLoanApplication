@@ -23,8 +23,9 @@ import com.homeloan.main.utility.EmiCalculator;
 public class EMICalculatorController {
 	
 	 @GetMapping("/emicalculate/{emi1}")
-	 public ResponseEntity<BaseResponse<EMI>> calculateEMI(@PathVariable String emi1) throws JsonMappingException, JsonProcessingException {
-		 
+	 public ResponseEntity<BaseResponse<EMI>> calculateEMI(@PathVariable String emi1) 
+			 throws JsonMappingException, JsonProcessingException
+	  {
 		    ObjectMapper mapper = new ObjectMapper();
 		    EMI emi = mapper.readValue(emi1, EMI.class);                          
 	        double principleAmmount = emi.getLoanAmmount();
@@ -35,4 +36,6 @@ public class EMICalculatorController {
 	        BaseResponse<EMI> baseresponse=new BaseResponse<EMI>(200,new Date(),"Monthly EMI Added Successfully",emi);
 	        return new ResponseEntity<BaseResponse<EMI>> (baseresponse,HttpStatus.OK);
 	    }
+	 
+	 
 }

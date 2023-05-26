@@ -31,5 +31,4 @@ public class Ledger {
 	remainingAmount;
 	private Integer tenure,	
 	defaulterCount;
-
 }

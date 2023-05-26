@@ -27,7 +27,6 @@ public class CustomerPropertyInfo {
 	private CustomerPropertyDocuments propertydocuments;
 	@OneToOne(cascade = CascadeType.ALL )
 	private PropertyAddress propertyAddress;
-	
-	
+
 
 }
