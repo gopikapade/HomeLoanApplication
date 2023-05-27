@@ -22,7 +22,7 @@ public class CurrentLoanDetails{
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer currentloanId;
+private Integer	currentloanId;
 private Integer currentloanNo,
 tenure;
 private Double totalAmounttobepaid,rateOfInterest,totalInterest;

@@ -2,8 +2,6 @@ package com.homeloan.main.serviceImpl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -187,10 +185,7 @@ public class PdfGenratorServiceImpl implements PdfGenratorService {
 	        // Add the letter content using Paragraph
 	        Paragraph letterContent = new Paragraph();
 
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	        String formattedDate = dateFormat.format(new Date());
-
-	        letterContent.add("Date: " + formattedDate + "\n\n");
+	        letterContent.add("Date: " + letter.getSanctionDate() + "\n\n");
 	        letterContent.add("Dear " + letter.getApplicantName() + ",\n\n");
 	        letterContent.add("Congratulations! We are pleased to inform you that your home loan application has been sanctioned by Dream Home Finance Limited.\n\n");
 

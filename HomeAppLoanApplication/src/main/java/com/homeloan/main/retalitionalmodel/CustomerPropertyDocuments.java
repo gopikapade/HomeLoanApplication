@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class CustomerPropertyDocuments {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer propertyDocid;
+	private int propertyDocid;
 	@Lob
 	private byte[] buildingpermission;
 	@Lob
