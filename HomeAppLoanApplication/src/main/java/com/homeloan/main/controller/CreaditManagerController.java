@@ -65,7 +65,7 @@ public class CreaditManagerController {
 //	Iterable<CreditManeger> iterable=cmservice.getcm();
 //	return new ResponseEntity<Iterable<CreditManeger>>(iterable, HttpStatus.OK);
 //	}
-//	
+	
 	
 
 }
