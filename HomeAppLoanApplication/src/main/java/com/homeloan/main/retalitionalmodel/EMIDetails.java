@@ -8,17 +8,20 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 @Entity
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
+@ToString
 public class EMIDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long emiID;
-	private String nextEmiDueDate,
+	private Integer emiID;
+	private String 
+	nextEmiDueDate,
 	previousEmiStatus;
 	private Double emiAmountMonthly;
-
+	
 }
