@@ -20,14 +20,14 @@ import lombok.ToString;
 public class EMI {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private Double LoanAmmount;
+	private Integer id;
+	private Double loanAmmount;
 	private Integer tenure;
 	private Double intrestrate;
 	private Double monthlyEmi;
 	private Date date = new Date();
 
-	
-	
 
+	
+	
 }
