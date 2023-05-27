@@ -70,6 +70,7 @@ public class PdfGenrator {
 		  SanctionLetter readValue = omMapper.readValue(letter, SanctionLetter.class);
 	    
           ByteArrayInputStream createpdf = pdfservice.createSanctionLetterpdf(readValue);
+          
          
             byte[] readAllBytes = createpdf.readAllBytes();
 					
@@ -77,6 +78,7 @@ public class PdfGenrator {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_PDF);
             headers.add("Content-Disposition", "inline; filename=SanctionLetter.pdf");
+            
 		
 		   RelationalExecutive relationalExecative  = dsi.saveCMSanctionLetter(rx,readAllBytes);
 		
