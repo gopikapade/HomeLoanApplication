@@ -16,7 +16,7 @@ public class EMIDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer emiID;
+	private Long emiID;
 	private String nextEmiDueDate,
 	previousEmiStatus;
 	private Double emiAmountMonthly;

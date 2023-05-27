@@ -33,4 +33,5 @@ public class EnquiryDetails {
 	private EducationlInfo education;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cibil cibilEnquiry;
+	
 }
