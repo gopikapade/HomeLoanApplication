@@ -120,8 +120,8 @@ public class PdfGenratorServiceImpl implements PdfGenratorService {
 	        letterBuilder.append("Loan Details:\n");
 	        letterBuilder.append("Product: ").append(sanctionLetter.getProducthomeEquity()).append("\n");
 	        letterBuilder.append("Loan Amount: ").append(sanctionLetter.getLoanammount()).append("\n");
-	        letterBuilder.append("Rate of Interest: ").append("7").append("%\n");
-	        letterBuilder.append("Loan Tenure: ").append(sanctionLetter.getLoanTenure()).append(" Year\n");
+	        letterBuilder.append("Rate of Interest: ").append(sanctionLetter.getRateOfInterest()).append("%\n");
+	        letterBuilder.append("Loan Tenure: ").append(sanctionLetter.getLoanTenure()).append(" months\n");
 	        letterBuilder.append("Monthly EMI: ").append(sanctionLetter.getMonthlyEmiAmount()).append("\n");
 
 	        letterBuilder.append("Mode of Payment: ").append(sanctionLetter.getModeOfPayment()).append("\n");

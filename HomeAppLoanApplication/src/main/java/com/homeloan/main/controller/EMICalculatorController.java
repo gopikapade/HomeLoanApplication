@@ -33,12 +33,9 @@ public class EMICalculatorController {
 	        int tenure = emi.getTenure();
 	        double monthly_emi=EmiCalculator.calculateEMI(principleAmmount, intrestrate, tenure);
 	        emi.setMonthlyEmi(monthly_emi);
-	        
 	        BaseResponse<EMI> baseresponse=new BaseResponse<EMI>(200,new Date(),"Monthly EMI Added Successfully",emi);
 	        return new ResponseEntity<BaseResponse<EMI>> (baseresponse,HttpStatus.OK);
 	    }
-	 
-	 
 	 
 	 
 }

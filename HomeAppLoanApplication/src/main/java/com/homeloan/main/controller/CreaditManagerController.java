@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.homeloan.main.model.CreditManeger;
-import com.homeloan.main.model.EMI;
 import com.homeloan.main.responce.BaseResponse;
 import com.homeloan.main.service.CreditManagerService;
 
@@ -45,16 +41,6 @@ public class CreaditManagerController {
 		BaseResponse<CreditManeger> baseResponse=new BaseResponse<CreditManeger>(200, new Date(), "Data Is Added Sucessfully", cmser);
 		
 		return new ResponseEntity<BaseResponse< CreditManeger>>(baseResponse, HttpStatus.OK);
-	}
-	
-	@PutMapping("/emiupdate/{id}")
-	public ResponseEntity<BaseResponse<CreditManeger>> updateemidetails(@PathVariable Integer id,@RequestBody EMI emi)
-	{
-	CreditManeger cmupdateforemi=cmservice.emiupdate(id,emi);
-	BaseResponse<CreditManeger> baseResponse=new BaseResponse<CreditManeger>(200, new Date(), "Emi Data Is Updated Sucessfully", cmupdateforemi);
-	
-	return new ResponseEntity<BaseResponse< CreditManeger>>(baseResponse, HttpStatus.OK);
-		
 	}
 	
 	
