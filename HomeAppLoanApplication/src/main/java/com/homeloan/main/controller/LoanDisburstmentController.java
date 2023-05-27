@@ -34,7 +34,7 @@ public class LoanDisburstmentController {
 		
 		
 		LoanDisbursement details=loandservice.updateloandisbusrtment(id,loandis);
-		BaseResponse<LoanDisbursement> baseResponse=new BaseResponse<LoanDisbursement>(200, new Date(),"Emi Update Sucessfully", details);
+		BaseResponse<LoanDisbursement> baseResponse=new BaseResponse<LoanDisbursement>(200, new Date(),"Loan Disburtment Sucessfully", details);
 		
 		return new ResponseEntity<BaseResponse<LoanDisbursement>>(baseResponse,HttpStatus.OK);
 				
