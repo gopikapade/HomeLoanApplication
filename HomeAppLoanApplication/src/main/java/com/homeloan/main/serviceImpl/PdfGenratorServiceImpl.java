@@ -2,6 +2,8 @@ package com.homeloan.main.serviceImpl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -109,9 +111,11 @@ public class PdfGenratorServiceImpl implements PdfGenratorService {
             
             document.add(line);
             
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String formattedDate = dateFormat.format(new Date());
             
             StringBuilder letterBuilder = new StringBuilder();
-            letterBuilder.append("Date: ").append(sanctionLetter.getSanctionDate()).append("\n\n");
+            letterBuilder.append("Date: ").append(formattedDate).append("\n\n");
 
 	        letterBuilder.append("Dear ").append(sanctionLetter.getApplicantName()).append(",\n\n");
 
