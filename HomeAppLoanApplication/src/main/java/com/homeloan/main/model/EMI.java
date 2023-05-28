@@ -26,8 +26,4 @@ public class EMI {
 	private Double intrestrate;
 	private Double monthlyEmi;
 	private Date date = new Date();
-
-
-	
-	
 }

@@ -29,15 +29,27 @@ public class EMIDetailsServiceIMPL  implements EMIDetailsService{
 	        CurrentLoanDetails currentLoanDetails = findById.get();
 	        List<EMIDetails> emiDetails = currentLoanDetails.getEmiDetails();
 	        
+	        
+	        CurrentLoanDetails currentLoanDetails2 = findById.get();
+            if(currentLoanDetails2.getDefualter()==null) {
+            	cld.setDefualter(0);
+            }
+            else {
+            	cld.setDefualter(currentLoanDetails2.getDefualter());
+            }
+	        
 	        Collections.sort(emiDetails, new Comparator<EMIDetails>() {
 	            @Override
 	            public int compare(EMIDetails e1, EMIDetails e2) {
 	                return Integer.compare(e1.getEmiID(), e2.getEmiID());
 	            }
 	        });
-	        
-
-	        if (!emiDetails.isEmpty()) {
+	        if(emiDetails.size()>1 && cld.getEmiDetails().get(0).getNextEmiDueDate()!=null) {
+	         
+	        	Integer defualter = cld.getDefualter();
+	        	cld.setDefualter(defualter+1);
+	        }
+	        else if (!emiDetails.isEmpty()) {
 	            EMIDetails lastPaidEmi = emiDetails.get(emiDetails.size() - 1);
 	            EMIDetails calculateNextEmi = NextEmi.calculateNextEmi(lastPaidEmi);
 	            System.out.println(calculateNextEmi);
